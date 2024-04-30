@@ -1,0 +1,7 @@
+package:
+  name: deku-ionic
+  dependencies:
+  - deku
+  - deku-core
+  - deku-dom
+  - aff-promise

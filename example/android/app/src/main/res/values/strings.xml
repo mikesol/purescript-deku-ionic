@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Deku Ionic</string>
+    <string name="title_activity_main">Deku Ionic</string>
+    <string name="package_name">org.purescript.deku</string>
+    <string name="custom_url_scheme">org.purescript.deku</string>
+</resources>

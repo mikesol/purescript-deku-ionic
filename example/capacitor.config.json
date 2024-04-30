@@ -1,0 +1,5 @@
+{
+    "appId": "org.purescript.deku",
+    "appName": "Deku Ionic",
+    "webDir": "dist"
+  }

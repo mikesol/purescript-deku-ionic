@@ -1,0 +1,7 @@
+package:
+  name: deku-ionic-example
+  dependencies:
+  - deku
+  - deku-core
+  - deku-dom
+  - deku-ionic

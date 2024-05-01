@@ -8,6 +8,7 @@ import Deku.Attribute (Attribute)
 import Deku.Core (Nut, elementify, attributeAtYourOwnRisk)
 import Deku.DOM (HTMLElement)
 import Deku.DOM.Self (class IsSelf)
+import Deku.Ionic.Enums as E
 import FRP.Poll (Poll)
 import Type.Proxy (Proxy)
 
@@ -15,10 +16,10 @@ data IonIcon
 
 type HTMLIonIcon (r :: Row Type) =
   ( __tag :: Proxy "HTMLIonIcon"
-  , size :: String
   , name :: String
   , slot :: String
   , src :: String
+  , size :: E.Size
   | HTMLElement r
   )
 

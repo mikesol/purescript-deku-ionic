@@ -8,7 +8,7 @@ module Deku.Ionic.Enums
   , Lines(..)
   , Mode
   , RouterDirection
-  , TitleSize
+  , Size
   , collapseCondense
   , collapseFade
   , danger
@@ -36,8 +36,8 @@ module Deku.Ionic.Enums
   , secondary
   , success
   , tertiary
-  , titleLarge
-  , titleSmall
+  , large
+  , small
   , unCollapse
   , unColor
   , unFill
@@ -47,7 +47,7 @@ module Deku.Ionic.Enums
   , unLines
   , unMode
   , unRouterDirection
-  , unTitleSize
+  , unSize
   , warning
   , Autocapitalize
   , unAutocapitalize
@@ -258,16 +258,16 @@ itemTypeSubmit = ItemType "submit"
 itemShapeRound :: ItemShape
 itemShapeRound = ItemShape "round"
 
-newtype TitleSize = TitleSize String
+newtype Size = Size String
 
-unTitleSize :: TitleSize -> String
-unTitleSize (TitleSize t) = t
+unSize :: Size -> String
+unSize (Size t) = t
 
-titleSmall :: TitleSize
-titleSmall = TitleSize "small"
+small :: Size
+small = Size "small"
 
-titleLarge :: TitleSize
-titleLarge = TitleSize "large"
+large :: Size
+large = Size "large"
 
 newtype RouterDirection = RouterDirection String
 

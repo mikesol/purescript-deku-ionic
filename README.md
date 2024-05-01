@@ -1,6 +1,6 @@
 # purescript-deku-ionic
 
-Build and ship deku apps on iOS and Android for fun and profit.
+Build and ship deku apps on iOS and Android for fun and profit, courtesy of [ionic](https://ionicframework.com/).
 
 ## Desktop
 ![desktop](./deku-ionic-desktop.jpg)
@@ -16,4 +16,4 @@ You can use this as a template. I've tried to make it as barebones as possible w
 
 ## Live demo please
 
-Well, since you said please, the [example](./example) is live [here](https://purescript-deku-ionic.surge.sh)
+Well, since you said please, the [example](./example) is live [here](https://purescript-deku-ionic.surge.sh).

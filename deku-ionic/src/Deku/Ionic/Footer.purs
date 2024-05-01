@@ -26,7 +26,7 @@ instance IsSelf IonFooter "HTMLIonFooter"
 
 ionFooter
   :: Array (Poll (Attribute (HTMLIonFooter ()))) -> Array Nut -> Nut
-ionFooter = elementify Nothing "ion-note"
+ionFooter = elementify Nothing "ion-footer"
 
 ionFooter_
   :: Array Nut -> Nut

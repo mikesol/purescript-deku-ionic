@@ -41,12 +41,12 @@ color_ = pure >>> color
 
 size
   :: forall r
-   . Poll E.TitleSize
+   . Poll E.Size
   -> Poll (Attribute (size :: String | r))
-size = map (E.unTitleSize >>> attributeAtYourOwnRisk "size")
+size = map (E.unSize >>> attributeAtYourOwnRisk "size")
 
 size_
   :: forall r
-   . E.TitleSize
+   . E.Size
   -> Poll (Attribute (size :: String | r))
 size_ = pure >>> size

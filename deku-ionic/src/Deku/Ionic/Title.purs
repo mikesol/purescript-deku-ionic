@@ -14,7 +14,7 @@ import Type.Proxy (Proxy)
 type HTMLIonTitle (r :: Row Type) =
   ( __tag :: Proxy "HTMLIonTitle"
   , color :: String
-  , size :: String
+  , size :: E.Size
   | HTMLElement r
   )
 
@@ -42,11 +42,11 @@ color_ = pure >>> color
 size
   :: forall r
    . Poll E.Size
-  -> Poll (Attribute (size :: String | r))
+  -> Poll (Attribute (size :: E.Size | r))
 size = map (E.unSize >>> attributeAtYourOwnRisk "size")
 
 size_
   :: forall r
    . E.Size
-  -> Poll (Attribute (size :: String | r))
+  -> Poll (Attribute (size :: E.Size | r))
 size_ = pure >>> size

@@ -38,13 +38,13 @@ ionIcon_ = ionIcon empty
 size
   :: forall r
    . Poll String
-  -> Poll (Attribute (size :: String | r))
+  -> Poll (Attribute (size :: E.Size | r))
 size = map (attributeAtYourOwnRisk "size")
 
 size_
   :: forall r
    . String
-  -> Poll (Attribute (size :: String | r))
+  -> Poll (Attribute (size :: E.Size | r))
 size_ = pure >>> size
 
 src

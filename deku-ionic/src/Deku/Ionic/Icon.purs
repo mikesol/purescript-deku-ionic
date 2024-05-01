@@ -18,6 +18,7 @@ type HTMLIonIcon (r :: Row Type) =
   , size :: String
   , name :: String
   , slot :: String
+  , src :: String
   | HTMLElement r
   )
 
@@ -44,6 +45,18 @@ size_
    . String
   -> Poll (Attribute (size :: String | r))
 size_ = pure >>> size
+
+src
+  :: forall r
+   . Poll String
+  -> Poll (Attribute (src :: String | r))
+src = map (attributeAtYourOwnRisk "src")
+
+src_
+  :: forall r
+   . String
+  -> Poll (Attribute (src :: String | r))
+src_ = pure >>> src
 
 name
   :: forall r

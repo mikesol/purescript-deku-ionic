@@ -16,7 +16,7 @@ data IonLabel
 
 type HTMLIonLabel (r :: Row Type) =
   ( __tag :: Proxy "HTMLIonLabel"
-  , color :: String
+  , color :: E.Color
   , mode :: E.Mode
   , position :: E.LabelPosition
   | HTMLElement r
@@ -36,13 +36,13 @@ ionLabel_ = ionLabel empty
 color
   :: forall r
    . Poll E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color = map (E.unColor >>> attributeAtYourOwnRisk "color")
 
 color_
   :: forall r
    . E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color_ = pure >>> color
 
 mode

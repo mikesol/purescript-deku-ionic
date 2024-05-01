@@ -13,7 +13,7 @@ import Type.Proxy (Proxy)
 
 type HTMLIonToolbar (r :: Row Type) =
   ( __tag :: Proxy "HTMLIonToolbar"
-  , color :: String
+  , color :: E.Color
   , mode :: String
   | HTMLElement r
   )
@@ -31,13 +31,13 @@ ionToolbar_ = ionToolbar empty
 color
   :: forall r
    . Poll E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color = map (E.unColor >>> attributeAtYourOwnRisk "color")
 
 color_
   :: forall r
    . E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color_ = pure >>> color
 
 

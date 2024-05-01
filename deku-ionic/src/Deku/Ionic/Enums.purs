@@ -49,6 +49,7 @@ module Deku.Ionic.Enums
   , unRouterDirection
   , unSize
   , warning
+  , customColor
   , Autocapitalize
   , unAutocapitalize
   , acOff
@@ -236,6 +237,9 @@ tertiary = Color "tertiary"
 
 warning :: Color
 warning = Color "warning"
+
+customColor :: String -> Color
+customColor = Color
 
 none :: Lines
 none = Lines "none"

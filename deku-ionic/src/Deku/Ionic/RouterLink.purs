@@ -20,7 +20,7 @@ data IonRouterLink
 
 type HTMLIonRouterLink (r :: Row Type) =
   ( __tag :: Proxy "HTMLIonRouterLink"
-  , color :: String
+  , color :: E.Color
   , href :: String
   , rel :: String
   , routerDirection :: String
@@ -42,7 +42,7 @@ ionRouterLink_ = ionRouterLink empty
 color
   :: forall r
    . Poll E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color = map (E.unColor >>> attributeAtYourOwnRisk "color")
 
 href
@@ -74,7 +74,7 @@ target = map (attributeAtYourOwnRisk "target")
 color_
   :: forall r
    . E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color_ = pure >>> color
 
 href_

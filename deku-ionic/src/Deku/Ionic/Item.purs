@@ -20,7 +20,7 @@ data IonItem
 type HTMLIonItem (r :: Row Type) =
   ( __tag :: Proxy "HTMLIonItem"
   , button :: Boolean
-  , color :: String
+  , color :: E.Color
   , counter :: Boolean
   , detail :: Boolean
   , detailIcon :: String
@@ -62,10 +62,10 @@ button_ = pure >>> button
 color
   :: forall r
    . Poll E.Color
-  -> Poll (Attribute (color :: String | r))
+  -> Poll (Attribute (color :: E.Color | r))
 color = map (E.unColor >>> attributeAtYourOwnRisk "color")
 
-color_ :: forall r. E.Color -> Poll (Attribute (color :: String | r))
+color_ :: forall r. E.Color -> Poll (Attribute (color :: E.Color | r))
 color_ = pure >>> color
 
 counter

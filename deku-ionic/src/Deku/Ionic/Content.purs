@@ -44,11 +44,11 @@ ionContent_
 ionContent_ = ionContent empty
 
 color
-  :: forall r. Poll E.Color -> Poll (Attribute (color :: String | r))
+  :: forall r. Poll E.Color -> Poll (Attribute (color :: E.Color | r))
 color = map (E.unColor >>> attributeAtYourOwnRisk "color")
 
 color_
-  :: forall r. E.Color -> Poll (Attribute (color :: String | r))
+  :: forall r. E.Color -> Poll (Attribute (color :: E.Color | r))
 color_ = pure >>> color
 
 -- Newtype wrappers for event handling

@@ -2,24 +2,24 @@ module Pages.Intro where
 
 import Prelude
 
-import Deku.Core (text_)
+import Deku.Core (fixed, text_)
 import Deku.DOM.Attributes as DA
 import Deku.Ionic.Button as IB
+import Deku.Ionic.Card as ICard
+import Deku.Ionic.CardContent as ICC
+import Deku.Ionic.CardHeader as ICH
+import Deku.Ionic.CardSubtitle as ICS
+import Deku.Ionic.CardTitle as ICT
 import Deku.Ionic.Content as IC
 import Deku.Ionic.Custom (customComponent_)
 import Deku.Ionic.Header as IH
 import Deku.Ionic.RouterLink as IRL
 import Deku.Ionic.Title as ITi
 import Deku.Ionic.Toolbar as IT
-import Deku.Ionic.Card as ICard
-import Deku.Ionic.CardContent as ICC
-import Deku.Ionic.CardHeader as ICH
-import Deku.Ionic.CardSubtitle as ICS
-import Deku.Ionic.CardTitle as ICT
 import Effect (Effect)
 
 intro :: Effect Unit
-intro = customComponent_ "intro-page" {} \_ ->
+intro = customComponent_ "intro-page" $ fixed
   [ IH.ionHeader_
       [ IT.ionToolbar_
           [ ITi.ionTitle_

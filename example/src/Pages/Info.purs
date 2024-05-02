@@ -2,7 +2,7 @@ module Pages.Info where
 
 import Prelude
 
-import Deku.Core (text_)
+import Deku.Core (fixed, text_)
 import Deku.DOM.Attributes as DA
 import Deku.Ionic.BackButton as IBB
 import Deku.Ionic.Buttons as IBS
@@ -14,7 +14,7 @@ import Deku.Ionic.Toolbar as IT
 import Effect (Effect)
 
 info :: Effect Unit
-info = customComponent_ "info-page" {} \_ ->
+info = customComponent_ "info-page" $ fixed
   [ IH.ionHeader_
       [ IT.ionToolbar_
           [ IBS.ionButtons [ DA.slot_ "start" ]

@@ -1,7 +1,12 @@
 package:
   name: deku-ionic
   dependencies:
-  - deku
-  - deku-core
-  - deku-dom
-  - aff-promise
+    - aff-promise
+    - deku
+    - deku-core
+    - deku-dom
+    - form-urlencoded
+    - heterogeneous
+    - random
+    - strings
+    - yoga-json

@@ -7,6 +7,11 @@ workspace:
         - deku
         - deku-core
         - deku-dom
+        - form-urlencoded
+        - heterogeneous
+        - random
+        - strings
+        - yoga-json
       test_dependencies: []
       build_plan:
         - aff
@@ -34,16 +39,20 @@ workspace:
         - foldable-traversable
         - foreign
         - foreign-object
+        - form-urlencoded
         - free
         - functions
         - functors
         - gen
+        - heterogeneous
         - hyrule
         - identity
         - integers
         - invariant
+        - js-bigints
         - js-date
         - js-timers
+        - js-uri
         - lazy
         - lists
         - literals
@@ -76,6 +85,7 @@ workspace:
         - unsafe-coerce
         - unsafe-reference
         - untagged-union
+        - variant
         - web-dom
         - web-events
         - web-file
@@ -84,6 +94,8 @@ workspace:
         - web-storage
         - web-touchevents
         - web-uievents
+        - yoga-json
+        - yoga-tree
     deku-ionic-example:
       path: example
       dependencies:
@@ -119,16 +131,20 @@ workspace:
         - foldable-traversable
         - foreign
         - foreign-object
+        - form-urlencoded
         - free
         - functions
         - functors
         - gen
+        - heterogeneous
         - hyrule
         - identity
         - integers
         - invariant
+        - js-bigints
         - js-date
         - js-timers
+        - js-uri
         - lazy
         - lists
         - literals
@@ -161,6 +177,7 @@ workspace:
         - unsafe-coerce
         - unsafe-reference
         - untagged-union
+        - variant
         - web-dom
         - web-events
         - web-file
@@ -169,6 +186,8 @@ workspace:
         - web-storage
         - web-touchevents
         - web-uievents
+        - yoga-json
+        - yoga-tree
   package_set:
     address:
       registry: 31.0.0
@@ -966,6 +985,18 @@ packages:
       - tuples
       - typelevel-prelude
       - unfoldable
+  form-urlencoded:
+    type: registry
+    version: 7.0.0
+    integrity: sha256-WUzk8DTjrbPVHKZ5w7XpPBO6ci6xFhvYguHp6RvX+18=
+    dependencies:
+      - foldable-traversable
+      - js-uri
+      - maybe
+      - newtype
+      - prelude
+      - strings
+      - tuples
   free:
     type: registry
     version: 7.0.0
@@ -1024,6 +1055,17 @@ packages:
       - tailrec
       - tuples
       - unfoldable
+  heterogeneous:
+    type: registry
+    version: 0.6.0
+    integrity: sha256-cfNYSK6yYmjTrkzk95Otpv6TUUkeBreexwqG/tBvUyg=
+    dependencies:
+      - either
+      - functors
+      - prelude
+      - record
+      - tuples
+      - variant
   hyrule:
     type: git
     url: https://github.com/mikesol/purescript-hyrule.git
@@ -1062,6 +1104,14 @@ packages:
     dependencies:
       - control
       - prelude
+  js-bigints:
+    type: registry
+    version: 2.1.0
+    integrity: sha256-MuNKFrDtxumhgiebuvTL8RuQws0Me0mKN+K+ZvA7tOc=
+    dependencies:
+      - integers
+      - maybe
+      - prelude
   js-date:
     type: registry
     version: 8.0.0
@@ -1079,6 +1129,13 @@ packages:
     integrity: sha256-znHWLSSOYw15P5DTcsAdal2lf7nGA2yayLdOZ2t5r7o=
     dependencies:
       - effect
+  js-uri:
+    type: registry
+    version: 3.1.0
+    integrity: sha256-3p0ynHveCJmC2CXze+eMBdW/2l5e953Q8XMAKz+jxUo=
+    dependencies:
+      - functions
+      - maybe
   lazy:
     type: registry
     version: 6.0.0
@@ -1390,6 +1447,19 @@ packages:
       - psci-support
       - tuples
       - unsafe-coerce
+  variant:
+    type: registry
+    version: 8.0.0
+    integrity: sha256-SR//zQDg2dnbB8ZHslcxieUkCeNlbMToapvmh9onTtw=
+    dependencies:
+      - enums
+      - lists
+      - maybe
+      - partial
+      - prelude
+      - record
+      - tuples
+      - unsafe-coerce
   web-dom:
     type: registry
     version: 6.0.0
@@ -1451,3 +1521,51 @@ packages:
     integrity: sha256-Vtp5m/8IWP3flDXpnVn3Mxq8lCFDlBFp5eBnB+uO/CM=
     dependencies:
       - web-html
+  yoga-json:
+    type: registry
+    version: 5.1.0
+    integrity: sha256-ei/fyvrh8fGgcqGrdRQ7+r6dwSYcfEGOFf5yKc1g7oE=
+    dependencies:
+      - arrays
+      - bifunctors
+      - control
+      - datetime
+      - effect
+      - either
+      - exceptions
+      - foldable-traversable
+      - foreign
+      - foreign-object
+      - free
+      - identity
+      - integers
+      - js-bigints
+      - js-date
+      - lists
+      - maybe
+      - newtype
+      - nullable
+      - numbers
+      - ordered-collections
+      - partial
+      - prelude
+      - record
+      - strings
+      - transformers
+      - tuples
+      - typelevel-prelude
+      - unsafe-coerce
+      - variant
+      - yoga-tree
+  yoga-tree:
+    type: registry
+    version: 1.0.0
+    integrity: sha256-wBjfEYrX1ffTHa/mE9B26C6td0FFfjYNnysTJ9/N8Hc=
+    dependencies:
+      - arrays
+      - control
+      - foldable-traversable
+      - free
+      - maybe
+      - prelude
+      - tailrec

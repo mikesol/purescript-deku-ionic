@@ -2,10 +2,8 @@ module Deku.Ionic.RouterLink where
 
 import Prelude
 
-import Control.Plus (empty)
-import Data.Maybe (Maybe(..))
 import Deku.Attribute (Attribute)
-import Deku.Core (Nut, elementify, attributeAtYourOwnRisk)
+import Deku.Core (attributeAtYourOwnRisk)
 import Deku.DOM (HTMLElement)
 import Deku.DOM.Self (class IsSelf)
 import Deku.Ionic.Enums as E
@@ -29,15 +27,6 @@ type HTMLIonRouterLink (r :: Row Type) =
   )
 
 instance IsSelf IonRouterLink "HTMLIonRouterLink"
-
-ionRouterLink
-  :: Array (Poll (Attribute (HTMLIonRouterLink ()))) -> Array Nut -> Nut
-ionRouterLink = elementify Nothing "ion-router-link"
-
-ionRouterLink_
-  :: Array Nut
-  -> Nut
-ionRouterLink_ = ionRouterLink empty
 
 color
   :: forall r

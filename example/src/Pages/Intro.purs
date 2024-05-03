@@ -11,15 +11,14 @@ import Deku.Ionic.CardHeader as ICH
 import Deku.Ionic.CardSubtitle as ICS
 import Deku.Ionic.CardTitle as ICT
 import Deku.Ionic.Content as IC
-import Deku.Ionic.Custom (customComponent_)
 import Deku.Ionic.Header as IH
-import Deku.Ionic.RouterLink as IRL
+import Deku.Ionic.Router (ionRoute_)
 import Deku.Ionic.Title as ITi
 import Deku.Ionic.Toolbar as IT
-import Effect (Effect)
+import FRP.Poll (Poll)
 
-intro :: Effect Unit
-intro = customComponent_ "intro-page" $ fixed
+intro :: _
+intro = ionRoute_ @{} \{ "/info": info } _ -> fixed
   [ IH.ionHeader_
       [ IT.ionToolbar_
           [ ITi.ionTitle_
@@ -41,7 +40,7 @@ intro = customComponent_ "intro-page" $ fixed
               [ text_ "Here's a small text description for the card content. Nothing more, nothing less."
               ]
           ]
-      , IRL.ionRouterLink [ IRL.href_ "#/info" ]
+      , info (pure { name: "Mike" } :: Poll _) []
           [ IB.ionButton_
               [ text_ "More info"
               ]

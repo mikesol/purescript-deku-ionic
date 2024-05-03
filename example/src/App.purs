@@ -1,16 +1,21 @@
 module App where
 
+import Prelude
 import Deku.Core (Nut)
 import Deku.Ionic.App as IA
-import Deku.Ionic.Route as IR
-import Deku.Ionic.Router as IRT
+import Deku.Ionic.Router (ionRouter, useHash_)
 import Deku.Ionic.RouterOutlet as IRO
+import Effect (Effect)
+import Pages.Info (info)
+import Pages.Intro (intro)
 
-app :: Nut
-app = IA.ionApp_
-  [ IRT.ionRouter_
-      [ IR.ionRoute [ IR.url_ "/", IR.component_ "intro-page" ] []
-      , IR.ionRoute [ IR.url_ "/info", IR.component_ "info-page" ] []
-      ]
-  , IRO.ionRouterOutlet_ []
-  ]
+app :: Effect Nut
+app = do
+  rtr <- ionRouter [ useHash_ false ]
+    { "/": intro
+    , "/info": info
+    }
+  pure $ IA.ionApp_
+    [ rtr
+    , IRO.ionRouterOutlet_ []
+    ]

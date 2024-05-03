@@ -14,7 +14,6 @@ export const getComponentProps = (router) => () => router.componentProps;
 //////
 export const unsafeCustomComponentImpl =
   (componentName) => (connectedHook) => (disconnectedHook) => (run) => () => {
-    console.log('cn', componentName);
     class CustomComponent extends HTMLElement {
       constructor() {
         super();

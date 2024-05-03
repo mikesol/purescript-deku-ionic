@@ -12,8 +12,8 @@ import Pages.Intro (intro)
 app :: Effect Nut
 app = do
   rtr <- ionRouter [ useHash_ false ]
-    { "/": intro
-    , "/info": info
+    { "": intro
+    , info
     }
   pure $ IA.ionApp_
     [ rtr

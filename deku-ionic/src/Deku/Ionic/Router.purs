@@ -51,6 +51,9 @@ newtype IonRouteWillChange = IonRouteWillChange Web.Event.Internal.Types.Event
 
 instance IsSelf IonRouter "HTMLIonRouter"
 
+slashize :: String -> String
+slashize s = "/" <> s
+
 root
   :: forall r
    . Poll String
@@ -231,7 +234,7 @@ instance
   makeLinks' _ = insert (Proxy :: Proxy key) (\u i -> elementify Nothing "ion-router-link" ([ map (doEncode >>> attributeAtYourOwnRisk "href") u ] <> i)) rest
     where
     routeName = reflectSymbol (Proxy :: Proxy key)
-    doEncode s = routeName <> "?" <>
+    doEncode s = slashize $ routeName <> "?" <>
       ( unsafePartial $ fromJust $ encode $ fromArray
           [ Tuple "q" (Just (writeJSON s))
           ]
@@ -278,7 +281,7 @@ instance
     eltName <- generateEltName
     unsafeCustomComponent unsafeJSON eltName mempty mempty (ctor links)
     rest <- makeRouter' links ir (Proxy :: Proxy rest)
-    pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" routeName) ] [] ] <> rest
+    pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" (slashize routeName)) ] [] ] <> rest
     where
     routeName = reflectSymbol (Proxy :: Proxy key)
     unsafeJSON s = unsafePartial $ fromJust $ readJSON_ s
@@ -295,7 +298,7 @@ instance
     eltName <- generateEltName
     toInsert <- makeRouter' links (Record.get (Proxy :: Proxy key) ir) (Proxy :: Proxy rl)
     rest <- makeRouter' links ir (Proxy :: Proxy rest)
-    pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" (reflectSymbol (Proxy :: Proxy key))) ] toInsert ] <> rest
+    pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" (slashize (reflectSymbol (Proxy :: Proxy key))) ) ] toInsert ] <> rest
 
 ionRoute_ :: forall links @args. (links -> args -> Nut) -> IonRouteDefinition links args
 ionRoute_ = IonRouteDefinition

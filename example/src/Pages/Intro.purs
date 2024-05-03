@@ -18,7 +18,7 @@ import Deku.Ionic.Toolbar as IT
 import FRP.Poll (Poll)
 
 intro :: _
-intro = ionRoute_ @{} \{ "/info": info } _ -> fixed
+intro = ionRoute_ @{} \{ info } _ -> fixed
   [ IH.ionHeader_
       [ IT.ionToolbar_
           [ ITi.ionTitle_

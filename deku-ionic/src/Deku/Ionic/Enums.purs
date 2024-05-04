@@ -2,7 +2,7 @@ module Deku.Ionic.Enums
   ( Collapse
   , Color
   , Fill
-  , ItemShape
+  , Shape
   , ItemType
   , LabelPosition
   , Lines(..)
@@ -17,7 +17,7 @@ module Deku.Ionic.Enums
   , fillSolid
   , full
   , inset
-  , itemShapeRound
+  , shapeRound
   , itemTypeButton
   , itemTypeReset
   , itemTypeSubmit
@@ -41,7 +41,7 @@ module Deku.Ionic.Enums
   , unCollapse
   , unColor
   , unFill
-  , unItemShape
+  , unShape
   , unItemType
   , unLabelPosition
   , unLines
@@ -156,12 +156,27 @@ module Deku.Ionic.Enums
   , unButtonExpand
   , buttonexpandBlock
   , buttonexpandFull
-
   , HandleBehavior
   , unHandleBehavior
   , handlebehaviorCycle
   , handlebehaviorNone
-
+  , Interface
+  , unInterface
+  , actionSheet
+  , alert
+  , popover
+  , Justify
+  , unJustify
+  , justifyEnd
+  , justifySpaceBetween
+  , justifyStart
+  , LabelPlacement
+  , unLabelPlacement
+  , labelPlacementEnd
+  , labelPlacementFixed
+  , labelPlacementFloating
+  , labelPlacementStacked
+  , labelPlacementStart
   ) where
 
 newtype Collapse = Collapse String
@@ -184,10 +199,10 @@ newtype ItemType = ItemType String
 unItemType :: ItemType -> String
 unItemType (ItemType t) = t
 
-newtype ItemShape = ItemShape String
+newtype Shape = Shape String
 
-unItemShape :: ItemShape -> String
-unItemShape (ItemShape t) = t
+unShape :: Shape -> String
+unShape (Shape t) = t
 
 newtype Fill = Fill String
 
@@ -259,8 +274,8 @@ itemTypeReset = ItemType "reset"
 itemTypeSubmit :: ItemType
 itemTypeSubmit = ItemType "submit"
 
-itemShapeRound :: ItemShape
-itemShapeRound = ItemShape "round"
+shapeRound :: Shape
+shapeRound = Shape "round"
 
 newtype Size = Size String
 
@@ -272,6 +287,20 @@ small = Size "small"
 
 large :: Size
 large = Size "large"
+
+newtype Interface = Interface String
+
+unInterface :: Interface -> String
+unInterface (Interface x) = x
+
+actionSheet :: Interface
+actionSheet = Interface "action-sheet"
+
+alert :: Interface
+alert = Interface "alert"
+
+popover :: Interface
+popover = Interface "popover"
 
 newtype RouterDirection = RouterDirection String
 
@@ -635,3 +664,37 @@ handlebehaviorCycle = HandleBehavior "cycle"
 
 handlebehaviorNone :: HandleBehavior
 handlebehaviorNone = HandleBehavior "none"
+
+newtype Justify = Justify String
+
+unJustify :: Justify -> String
+unJustify (Justify t) = t
+
+justifyEnd :: Justify
+justifyEnd = Justify "end"
+
+justifySpaceBetween :: Justify
+justifySpaceBetween = Justify "space-between"
+
+justifyStart :: Justify
+justifyStart = Justify "start"
+
+newtype LabelPlacement = LabelPlacement String
+
+unLabelPlacement :: LabelPlacement -> String
+unLabelPlacement (LabelPlacement t) = t
+
+labelPlacementEnd :: LabelPlacement
+labelPlacementEnd = LabelPlacement "end"
+
+labelPlacementFixed :: LabelPlacement
+labelPlacementFixed = LabelPlacement "fixed"
+
+labelPlacementFloating :: LabelPlacement
+labelPlacementFloating = LabelPlacement "floating"
+
+labelPlacementStacked :: LabelPlacement
+labelPlacementStacked = LabelPlacement "stacked"
+
+labelPlacementStart :: LabelPlacement
+labelPlacementStart = LabelPlacement "start"

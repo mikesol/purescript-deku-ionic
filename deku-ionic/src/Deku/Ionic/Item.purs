@@ -32,7 +32,7 @@ type HTMLIonItem (r :: Row Type) =
   , mode :: E.Mode
   , rel :: String
   , routerDirection :: E.RouterDirection
-  , shape :: E.ItemShape
+  , shape :: E.Shape
   , target :: String
   , xtype :: E.ItemType
   | HTMLElement r
@@ -169,11 +169,11 @@ routerDirection_ = pure >>> routerDirection
 
 shape
   :: forall r
-   . Poll E.ItemShape
-  -> Poll (Attribute (shape :: E.ItemShape | r))
-shape = map (E.unItemShape >>> attributeAtYourOwnRisk "shape")
+   . Poll E.Shape
+  -> Poll (Attribute (shape :: E.Shape | r))
+shape = map (E.unShape >>> attributeAtYourOwnRisk "shape")
 
-shape_ :: forall r. E.ItemShape -> Poll (Attribute (shape :: E.ItemShape | r))
+shape_ :: forall r. E.Shape -> Poll (Attribute (shape :: E.Shape | r))
 shape_ = pure >>> shape
 
 target

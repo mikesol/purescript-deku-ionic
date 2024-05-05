@@ -33,6 +33,7 @@ type HTMLIonModal (r :: Row Type) =
   , handleBehavior :: E.HandleBehavior
   , initialBreakpoint :: Number
   , isOpen :: Boolean
+  , swipeToClose :: Boolean
   , keepContentsMounted :: Boolean
   , keyboardClose :: Boolean
   , mode :: E.Mode
@@ -105,6 +106,10 @@ isOpen
   -> Poll (Attribute (isOpen :: Boolean | r))
 isOpen = map (show >>> attributeAtYourOwnRisk "is-open")
 
+swipeToClose
+  :: forall r. Poll Boolean
+  -> Poll (Attribute (swipeToClose :: Boolean | r))
+swipeToClose = map (show >>> attributeAtYourOwnRisk "swipe-to-close")
 keepContentsMounted
   :: forall r. Poll Boolean
   -> Poll (Attribute (keepContentsMounted :: Boolean | r))
@@ -208,6 +213,12 @@ isOpen_
    . Boolean
   -> Poll (Attribute (isOpen :: Boolean | r))
 isOpen_ = pure >>> isOpen
+
+swipeToClose_
+  :: forall r
+   . Boolean
+  -> Poll (Attribute (swipeToClose :: Boolean | r))
+swipeToClose_ = pure >>> swipeToClose
 
 keepContentsMounted_
   :: forall r

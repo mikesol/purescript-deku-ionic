@@ -269,3 +269,5 @@ onIonCancel = map ((coerce :: _ -> _ -> _ Unit) >>> map (_ $> true) >>> callback
 
 onIonDismiss :: forall r. Poll (IonDismiss -> Effect Unit) -> Poll (Attribute (onIonDismiss :: IonDismiss | r))
 onIonDismiss = map ((coerce :: _ -> _ -> _ Unit) >>> map (_ $> true) >>> callbackWithCaution "ionDismiss")
+
+foreign import value :: IonChange -> Effect String

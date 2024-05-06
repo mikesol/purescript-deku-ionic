@@ -1,1 +1,1 @@
-export const complete = (e) => () => e.complete();
+export const complete = (e) => () => e.target.complete();

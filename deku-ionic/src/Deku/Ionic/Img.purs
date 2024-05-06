@@ -26,7 +26,7 @@ instance IsSelf IonImg "HTMLIonImg"
 
 ionImg
   :: Array (Poll (Attribute (HTMLIonImg ()))) -> Array Nut -> Nut
-ionImg = elementify Nothing "ion-thumbnail"
+ionImg = elementify Nothing "ion-img"
 
 ionImg_
   :: Array Nut -> Nut

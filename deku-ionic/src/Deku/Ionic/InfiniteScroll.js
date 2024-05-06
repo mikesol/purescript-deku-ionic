@@ -1,0 +1,1 @@
+export const complete = (e) => () => e.complete();

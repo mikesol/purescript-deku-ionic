@@ -27,6 +27,8 @@ type HTMLIonButton (r :: Row Type) =
   , download :: String
   , href :: String
   , expand :: E.ButtonExpand
+  , onIonBlur :: IonBlur
+  , onIonFocus :: IonFocus
   | HTMLElement r
   )
 
@@ -114,6 +116,14 @@ onIonBlur
   :: forall r. Poll (IonBlur -> Effect Unit) -> Poll (Attribute (onIonBlur :: IonBlur | r))
 onIonBlur = map ((coerce :: _ -> _ -> _ Unit) >>> map (_ $> true) >>> callbackWithCaution "ionBlur")
 
+onIonBlur_
+  :: forall r. (IonBlur -> Effect Unit) -> Poll (Attribute (onIonBlur :: IonBlur | r))
+onIonBlur_ = pure >>> onIonBlur
+
 onIonFocus
   :: forall r. Poll (IonFocus -> Effect Unit) -> Poll (Attribute (onIonFocus :: IonFocus | r))
 onIonFocus = map ((coerce :: _ -> _ -> _ Unit) >>> map (_ $> true) >>> callbackWithCaution "ionFocus")
+
+onIonFocus_
+  :: forall r. (IonFocus -> Effect Unit) -> Poll (Attribute (onIonFocus :: IonFocus | r))
+onIonFocus_ = pure >>> onIonFocus

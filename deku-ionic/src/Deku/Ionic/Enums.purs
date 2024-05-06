@@ -177,6 +177,21 @@ module Deku.Ionic.Enums
   , labelPlacementFloating
   , labelPlacementStacked
   , labelPlacementStart
+  , Position
+  , unPosition
+  , bottom
+  , top
+  , LoadingSpinner
+  , unLoadingSpinner
+  , bubbles
+  , circles
+  , circular
+  , crescent
+  , dots
+  , lines
+  , linesSharp
+  , linesSharpSmall
+  , linesSmall
   ) where
 
 newtype Collapse = Collapse String
@@ -698,3 +713,46 @@ labelPlacementStacked = LabelPlacement "stacked"
 
 labelPlacementStart :: LabelPlacement
 labelPlacementStart = LabelPlacement "start"
+
+newtype Position = Position String
+
+unPosition :: Position -> String
+unPosition (Position t) = t
+
+bottom :: Position
+bottom = Position "bottom"
+
+top :: Position
+top = Position "top"
+
+newtype LoadingSpinner = LoadingSpinner String
+
+unLoadingSpinner :: LoadingSpinner -> String
+unLoadingSpinner (LoadingSpinner t) = t
+
+bubbles :: LoadingSpinner
+bubbles = LoadingSpinner "bubbles"
+
+circles :: LoadingSpinner
+circles = LoadingSpinner "circles"
+
+circular :: LoadingSpinner
+circular = LoadingSpinner "circular"
+
+crescent :: LoadingSpinner
+crescent = LoadingSpinner "crescent"
+
+dots :: LoadingSpinner
+dots = LoadingSpinner "dots"
+
+lines :: LoadingSpinner
+lines = LoadingSpinner "lines"
+
+linesSharp :: LoadingSpinner
+linesSharp = LoadingSpinner "lines-sharp"
+
+linesSharpSmall :: LoadingSpinner
+linesSharpSmall = LoadingSpinner "lines-sharp-small"
+
+linesSmall :: LoadingSpinner
+linesSmall = LoadingSpinner "lines-small"

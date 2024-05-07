@@ -31,3 +31,23 @@ export const unsafeCustomComponentImpl =
     }
     window.customElements.define(componentName, CustomComponent);
   };
+
+  export const eagerUnsafeCustomComponentImpl =
+  (componentName) => (connectedHook) => (disconnectedHook) => (run) => () => {
+    const e = document.createElement('div');
+    run(e)();
+    const v = e.firstChild;
+    class CustomComponent extends HTMLElement {
+      constructor() {
+        super();
+      }
+      disconnectedCallback() {
+        disconnectedHook();
+      }
+      connectedCallback() {
+        this.appendChild(v);
+        connectedHook();
+      }
+    }
+    window.customElements.define(componentName, CustomComponent);
+  };

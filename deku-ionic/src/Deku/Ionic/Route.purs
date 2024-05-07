@@ -99,6 +99,13 @@ foreign import unsafeCustomComponentImpl
   -> (Web.DOM.Element -> String -> Effect Unit)
   -> Effect Unit
 
+foreign import eagerUnsafeCustomComponentImpl
+  :: String
+  -> Effect Unit
+  -> Effect Unit
+  -> (Web.DOM.Element -> Effect Unit)
+  -> Effect Unit
+
 unsafeCustomComponent
   :: forall a
    . (String -> a)
@@ -110,6 +117,17 @@ unsafeCustomComponent
 unsafeCustomComponent sf s onConnect onDisconnect nutF = unsafeCustomComponentImpl s onConnect onDisconnect
   \e str ->
     runInElement e (nutF $ sf str)
+
+eagerUnsafeCustomComponent
+  :: String
+  -> Effect Unit
+  -> Effect Unit
+  -> Nut
+  -> Effect Unit
+eagerUnsafeCustomComponent s onConnect onDisconnect nut = eagerUnsafeCustomComponentImpl s onConnect onDisconnect
+  \e ->
+    runInElement e nut
+
 
 -- Function to generate a random lowercase letter
 randomLetter :: Effect Char

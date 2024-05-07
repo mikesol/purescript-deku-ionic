@@ -16,7 +16,7 @@ import Deku.Core (Nut, attributeAtYourOwnRisk, callbackWithCaution, elementify)
 import Deku.DOM (HTMLElement)
 import Deku.DOM.Self (class IsSelf)
 import Deku.Ionic.Enums as E
-import Deku.Ionic.Route (unsafeCustomComponent)
+import Deku.Ionic.Route (eagerUnsafeCustomComponent, unsafeCustomComponent)
 import Deku.Ionic.RouterLink (HTMLIonRouterLink)
 import Deku.Ionic.Unsafe as U
 import Effect (Effect)
@@ -136,7 +136,7 @@ generateEltName = do
   pure $ firstPart <> "-" <> secondPart
 
 ---
-newtype IonRouteDefinition links args = IonRouteDefinition (links -> args -> Nut)
+data IonRouteDefinition links args = IonRouteDefinition (links -> args -> Nut) | EagerIonRouteDefinition (links -> Nut)
 
 class ConstructLinkDefs :: forall k1 k2. k1 -> k2 -> Constraint
 class ConstructLinkDefs i o | i -> o
@@ -277,9 +277,10 @@ instance
   ) =>
   MakeRouter' links i (RL.Cons key (IonRouteDefinition { | links } args) rest) where
   makeRouter' links ir _ = do
-    let IonRouteDefinition ctor = Record.get (Proxy :: Proxy key) ir
     eltName <- generateEltName
-    unsafeCustomComponent unsafeJSON eltName mempty mempty (ctor links)
+    case Record.get (Proxy :: Proxy key) ir of
+      IonRouteDefinition ctor -> unsafeCustomComponent unsafeJSON eltName mempty mempty (ctor links)
+      EagerIonRouteDefinition ctor -> eagerUnsafeCustomComponent eltName mempty mempty (ctor links)
     rest <- makeRouter' links ir (Proxy :: Proxy rest)
     pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" (slashize routeName)) ] [] ] <> rest
     where
@@ -298,10 +299,14 @@ instance
     eltName <- generateEltName
     toInsert <- makeRouter' links (Record.get (Proxy :: Proxy key) ir) (Proxy :: Proxy rl)
     rest <- makeRouter' links ir (Proxy :: Proxy rest)
-    pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" (slashize (reflectSymbol (Proxy :: Proxy key))) ) ] toInsert ] <> rest
+    pure $ [ elementify Nothing "ion-route" [ pure (attributeAtYourOwnRisk "component" eltName), pure (attributeAtYourOwnRisk "url" (slashize (reflectSymbol (Proxy :: Proxy key)))) ] toInsert ] <> rest
 
 ionRoute_ :: forall links @args. (links -> args -> Nut) -> IonRouteDefinition links args
 ionRoute_ = IonRouteDefinition
+
+ionRouteEager_ :: forall links. (links -> Nut) -> IonRouteDefinition links {}
+ionRouteEager_ = EagerIonRouteDefinition
+
 
 ionRouter
   :: forall rl links i o k

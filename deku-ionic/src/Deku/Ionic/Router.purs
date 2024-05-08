@@ -307,7 +307,6 @@ ionRoute_ = IonRouteDefinition
 ionRouteEager_ :: forall links. (links -> Nut) -> IonRouteDefinition links {}
 ionRouteEager_ = EagerIonRouteDefinition
 
-
 ionRouter
   :: forall rl links i o k
    . RowToList i rl

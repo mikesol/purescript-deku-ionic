@@ -32,9 +32,11 @@ export const unsafeCustomComponentImpl =
     window.customElements.define(componentName, CustomComponent);
   };
 
-  export const eagerUnsafeCustomComponentImpl =
+export const eagerUnsafeCustomComponentImpl =
   (componentName) => (connectedHook) => (disconnectedHook) => (run) => () => {
-    const e = document.createElement('div');
+    const e = document.createElement("div");
+    e.setAttribute('style', 'display: none;');
+    document.body.appendChild(e);
     run(e)();
     const v = e.firstChild;
     class CustomComponent extends HTMLElement {

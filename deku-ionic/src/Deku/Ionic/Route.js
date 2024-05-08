@@ -48,7 +48,7 @@ export const eagerUnsafeCustomComponentImpl =
       }
       connectedCallback() {
         for (const i of v) {
-          this.appendChild(v);
+          this.appendChild(i);
         }
         connectedHook();
       }

@@ -35,10 +35,10 @@ export const unsafeCustomComponentImpl =
 export const eagerUnsafeCustomComponentImpl =
   (componentName) => (connectedHook) => (disconnectedHook) => (run) => () => {
     const e = document.createElement("div");
-    e.setAttribute('style', 'display: none;');
+    e.setAttribute("style", "display: none;");
     document.body.appendChild(e);
     run(e)();
-    const v = e.firstChild;
+    const v = Array.from(e.children);
     class CustomComponent extends HTMLElement {
       constructor() {
         super();
@@ -47,7 +47,9 @@ export const eagerUnsafeCustomComponentImpl =
         disconnectedHook();
       }
       connectedCallback() {
-        this.appendChild(v);
+        for (const i of v) {
+          this.appendChild(v);
+        }
         connectedHook();
       }
     }
